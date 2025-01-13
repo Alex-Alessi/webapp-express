@@ -3,9 +3,11 @@ require("dotenv").config();
 //# CONFIG EXPRESS
 const express = require("express");
 const app = express();
-const { APP_HOST, APP_PORT } = process.env;
+const { APP_HOST, APP_PORT, FRONTEND_URL } = process.env;
+const cors = require("cors");
 
 //# MIDDLEWARES
+app.use(cors({ origin: FRONTEND_URL }));
 app.use(express.json());
 app.use(express.static("public"));
 
